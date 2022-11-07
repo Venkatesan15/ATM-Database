@@ -1,8 +1,10 @@
 package UiLayer;
 
-//import DataLayer.AccountProcess;
-import MiddleLayer.CallAccountProcessor;
-import MiddleLayer.CreationValidator;
+import ExtraFeatures.UiLayer1.*;
+import ExtraFeatures.DataLayer1.SeeCreditCard;
+import ExtraFeatures.DataLayer1.SeeTransactions;
+import MiddleLayer.CallAtmProcesses;
+import Validator.CreationValidator;
 import MiddleLayer.GetAccountByPhNoPass;
 
 import java.util.Scanner;
@@ -17,7 +19,7 @@ public class LoginController {
         password = sc.nextLine();
         loginPage(phoneNumber,password);
     }
-    private String enterPhoneNumber()
+    public String enterPhoneNumber()
     {
         Scanner sc=new Scanner(System.in);
         String phoneNumber =sc.nextLine();
@@ -40,14 +42,14 @@ public class LoginController {
         }
         else
         {
-            CallAccountProcessor callAccountProcessorObj=new CallAccountProcessor();
-            int id=callAccountProcessorObj.getId(phoneNumber,password);
+            CallAtmProcesses callAtmProcessesObj =new CallAtmProcesses();
+            int id= callAtmProcessesObj.getId(phoneNumber,password);
 
             int UserInputForAccountProcess=1;
-            while(UserInputForAccountProcess!=5)
+            while(UserInputForAccountProcess!=10)
             {
                 UserInputForAccountProcess= dashboardObj.enterProcess();
-                if(UserInputForAccountProcess<5)
+                if(UserInputForAccountProcess<10)
                 {
                     switch (UserInputForAccountProcess)
                     {
@@ -63,6 +65,25 @@ public class LoginController {
                         case 4:
                             dashboardObj.enterChangePassword(id);
                             break;
+                        case 5:
+                            SendMoney sendMoneyObj=new SendMoney();
+                            sendMoneyObj.sendMoney(id);
+                            break;
+                        case 6:
+                            ApplyCreditCard applyCreditCardObj=new ApplyCreditCard();
+                            applyCreditCardObj.applyCreditCard(id,phoneNumber);
+                            break;
+                        case 7:
+                            GetTransactionDetails.getTransactionDetails(id);
+                            break;
+                        case 8:
+                            GetCreditCardDetails.getCreditCardDetails(id);
+                            break;
+                        case 9:
+                            SeeProfile seeProfileObj=new SeeProfile();
+                            seeProfileObj.seeProfile(id);
+                            break;
+
                     }
                 }
             }

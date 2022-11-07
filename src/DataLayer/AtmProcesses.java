@@ -1,39 +1,29 @@
 package DataLayer;
+import ExtraFeatures.MiddleLayer1.TransactionHistory;
+
 import java.sql.*;
-public class AccountProcess implements InterAccountProcess{
+public class AtmProcesses implements InterAccountProcess{
     Jdbc jdbc=new Jdbc();
     Connection con=jdbc.getConnection();
-    public int getId(String phNo,String pass)
-    {
-        int id=0;
-        String query="SELECT ID FROM ATMDATABASE WHERE phoneNumber='"+phNo+"' AND userPassword='"+pass+"'";
-        try {
-            Statement st = con.createStatement();
-            ResultSet rs=st.executeQuery(query);
-            rs.next();
-            id=rs.getInt("ID");
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
-        return id;
-    }
+
     public void addMoney(int depositAmount,int id)
     {
-        String query ="UPDATE ATMDATABASE SET accountBalance=accountBalance+'"+depositAmount+"' WHERE ID='"+id+"'";
+        String query ="UPDATE userDetails SET userAccountBalance=userAccountBalance+'"+depositAmount+"' WHERE userId='"+id+"'";
         try {
             Statement st = con.createStatement();
             st.executeUpdate(query);
+
         }
         catch(Exception e)
         {
             System.out.println(e);
         }
+        TransactionHistory transactionHistoryObj=new TransactionHistory();
+        transactionHistoryObj.transactionHistory(id,"Credited",depositAmount);
     }
     public void getWithdraw(int withdrawAmount,int id)
     {
-        String query ="UPDATE ATMDATABASE SET accountBalance=accountBalance-'"+withdrawAmount+"' WHERE ID='"+id+"'";
+        String query ="UPDATE userDetails SET userAccountBalance=userAccountBalance-'"+withdrawAmount+"' WHERE userId='"+id+"'";
         try {
             Statement st = con.createStatement();
             st.executeUpdate(query);
@@ -42,15 +32,17 @@ public class AccountProcess implements InterAccountProcess{
         {
             System.out.println(e);
         }
+        TransactionHistory transactionHistoryObj=new TransactionHistory();
+        transactionHistoryObj.transactionHistory(id,"Debited",withdrawAmount);
     }
     public long getAccountBalanceInJdbc(int id)
     {
-        String query="SELECT accountBalance FROM ATMDATABASE WHERE ID='"+id+"'";
+        String query="SELECT userAccountBalance FROM userDetails WHERE userId='"+id+"'";
         try {
             Statement st = con.createStatement();
             ResultSet rs=st.executeQuery(query);
             rs.next();
-            return rs.getLong("accountBalance");
+            return rs.getLong("userAccountBalance");
         }
         catch(Exception e)
         {
@@ -61,7 +53,7 @@ public class AccountProcess implements InterAccountProcess{
 
     public void changePassword(String newPass,int id)
     {
-        String query ="UPDATE ATMDATABASE SET userPassword='"+newPass+"' WHERE ID='"+id+"'";
+        String query ="UPDATE userDetails SET userPassword='"+newPass+"' WHERE userId='"+id+"'";
         try {
             Statement st = con.createStatement();
             st.executeUpdate(query);

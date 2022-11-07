@@ -1,5 +1,5 @@
 package UiLayer;
-import MiddleLayer.*;
+import Validator.*;
 
 import java.util.Scanner;
 public class EnterRegisterDetails {
@@ -13,8 +13,9 @@ public class EnterRegisterDetails {
         System.out.println("Please enter ur name in only upper case without any special characters except space");
         String name= sc.nextLine();
         boolean isValidName=creationValidatorObj.checkValidName(name);
-        if(isValidName)
-        return name;
+        if(isValidName) {
+            return name;
+        }
         else
         {
             System.out.println("Please enter Valid name");
@@ -31,8 +32,9 @@ public class EnterRegisterDetails {
 
         int age= onlyIntObj.onlyInt();
         boolean isValidAge=creationValidatorObj.checkValidAge(age);
-        if(isValidAge)
-        return age;
+        if(isValidAge) {
+            return age;
+        }
         else {
             System.out.println("Please enter valid Age");
             return enterAge();
@@ -70,8 +72,9 @@ public class EnterRegisterDetails {
         Scanner scan=new Scanner(System.in);
         String phoneNumber= scan.nextLine();
         boolean isValidPhNo=creationValidatorObj.checkValidPhoneNumber(phoneNumber);
-        if(isValidPhNo)
+        if(isValidPhNo) {
             return phoneNumber;
+        }
         else
         {
             System.out.println("Please enter valid Phone number");
@@ -87,8 +90,9 @@ public class EnterRegisterDetails {
         System.out.println("Please reenter the password");
         String reEnterPass= sc.nextLine();
         boolean isValidPass=creationValidatorObj.checkValidPassword(pass,reEnterPass);
-        if(isValidPass)
+        if(isValidPass) {
             return pass;
+        }
         else
         {
             System.out.println("The passwords are Not Same");

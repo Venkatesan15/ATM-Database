@@ -1,7 +1,7 @@
-package MiddleLayer;
+package Validator;
 import DataLayer.SetRegisterDetails;
 import UiLayer.EnterRegisterDetails;
-import UiLayer.Validator;
+import Validator.Validator;
 
 import static java.lang.String.*;
 
@@ -17,8 +17,9 @@ public class CreationValidator implements Validator
     }
     public boolean checkValidGender(int gender)
     {
-        if(gender==1||gender==2||gender==3)
-        return true;
+        if(gender==1||gender==2||gender==3) {
+            return true;
+        }
         else {
             return false;
         }
@@ -61,14 +62,16 @@ public class CreationValidator implements Validator
         {
 
         }
-        if((phoneNumber.length()==10)&&numberCount==10)
-            c1=1;
+        if((phoneNumber.length()==10)&&numberCount==10) {
+            c1 = 1;
+        }
         return c1;
     }
     public boolean checkValidAge(int age)
     {
-        if(age>17&&age<200)
+        if(age>17&&age<200) {
             return true;
+        }
         else
         {
             return false;
@@ -76,6 +79,10 @@ public class CreationValidator implements Validator
     }
     public boolean checkValidName(String name)
     {
+        if(name.length()==0)
+        {
+            return false;
+        }
         int upperCaseCountInName=0;
         for(char i:name.toCharArray())
         {
@@ -84,8 +91,9 @@ public class CreationValidator implements Validator
                 upperCaseCountInName++;
             }
         }
-        if(upperCaseCountInName==name.length())
+        if(upperCaseCountInName==name.length()) {
             return true;
+        }
         else
         {
            return false;

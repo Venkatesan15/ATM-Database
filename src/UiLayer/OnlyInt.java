@@ -3,7 +3,7 @@ package UiLayer;
 import java.util.Scanner;
 
 public class OnlyInt {
-    public int onlyInt()
+    public static int onlyInt()
     {
         Scanner sc=new Scanner(System.in);
         int input=1;

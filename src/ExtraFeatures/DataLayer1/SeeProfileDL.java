@@ -1,0 +1,27 @@
+package ExtraFeatures.DataLayer1;
+
+import DataLayer.Jdbc;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class SeeProfileDL {
+    public ResultSet seeProfileDL(int userId)
+    {
+        try
+        {
+            String query="SELECT userName,userAge,userGender,userPhoneNumber,userAccountNumber from userDetails where userId='"+userId+"'";
+            Connection con= Jdbc.getConnection();
+            Statement st=con.createStatement();
+            ResultSet rs=st.executeQuery(query);
+            return rs;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+
+    }
+}

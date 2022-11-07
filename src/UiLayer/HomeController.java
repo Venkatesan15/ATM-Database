@@ -27,7 +27,7 @@ public class HomeController {
             System.out.println("Thank You for using our ATM");
             System.out.println("HAVE A GOOD DAY");
         }
-        if(enterRegOrLoginOrExitByUser>3)
+        if(!(enterRegOrLoginOrExitByUser==1||enterRegOrLoginOrExitByUser==2||enterRegOrLoginOrExitByUser==3))
         {
             System.out.println("Please enter valid process");
             regOrLoginOrExitByUser();

@@ -1,12 +1,17 @@
 package MiddleLayer;
-import DataLayer.AccountProcess;
+import DataLayer.GetUserIdByPhNo;
+import DataLayer.AtmProcesses;
 import DataLayer.InterAccountProcess;
 import UiLayer.Dashboard;
-public class CallAccountProcessor {
-    InterAccountProcess accountProcessObj =new AccountProcess();
+public class CallAtmProcesses {
+    InterAccountProcess accountProcessObj =new AtmProcesses();
+    AtmProcesses atmProcessesObj =new AtmProcesses();
+
     public  int getId(String phoneNumber,String password)
     {
-        return accountProcessObj.getId(phoneNumber,password);
+        GetUserIdByPhNo getUserIdByPhNoObj=new GetUserIdByPhNo();
+
+        return getUserIdByPhNoObj.getId(phoneNumber,password);
     }
 
     public void addMoney(int depositAmount, int idNumber)
@@ -19,8 +24,9 @@ public class CallAccountProcessor {
         Dashboard dashboardObj=new Dashboard();
         long accountBalance= accountProcessObj.getAccountBalanceInJdbc(idNumber);
 
-        if(withdrawAmount>accountBalance)
+        if(withdrawAmount>accountBalance) {
             dashboardObj.ifWithdrawGreaterBalance(accountBalance);
+        }
         else {
             dashboardObj.ifWithdrawLesserBalance();
             accountProcessObj.getWithdraw(withdrawAmount,idNumber);
@@ -32,6 +38,6 @@ public class CallAccountProcessor {
     }
     public void changePass(String pass,int id)
     {
-        accountProcessObj.changePassword(pass,id);
+        atmProcessesObj.changePassword(pass,id);
     }
 }

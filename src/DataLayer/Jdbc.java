@@ -16,7 +16,7 @@ public class Jdbc {
             System.out.println(e);
         }
     }
-    public Connection getConnection()
+    public static Connection getConnection()
     {
         return con;
     }

@@ -1,5 +1,6 @@
 package UiLayer;
 
+import MiddleLayer.GenerateAccountNo;
 import MiddleLayer.SaveRegisterDetails;
 
 
@@ -11,6 +12,7 @@ public class RegisterPage {
         String gender;
         String phoneNumber;
         String password;
+        long accountNumber;
 
         EnterRegisterDetails enterRegisterDetailsObj=new EnterRegisterDetails();
 
@@ -20,9 +22,12 @@ public class RegisterPage {
         gender= enterRegisterDetailsObj.selectGender();
         phoneNumber= enterRegisterDetailsObj.enterPhoneNumber();
         password= enterRegisterDetailsObj.enterPassword();
+        accountNumber= GenerateAccountNo.generateAccNo();
+
+        System.out.println("Your account Number : "+accountNumber);
 
         SaveRegisterDetails saveRegisterDetailsObj=new SaveRegisterDetails();
-        saveRegisterDetailsObj.saveRegisterDetails(name,age,gender,phoneNumber,password);
+        saveRegisterDetailsObj.saveRegisterDetails(name,age,gender,phoneNumber,password,accountNumber);
 
         System.out.println("Registration Successful");
     }

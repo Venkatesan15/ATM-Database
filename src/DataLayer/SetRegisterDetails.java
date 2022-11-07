@@ -3,10 +3,10 @@ import java.sql.*;
 public class SetRegisterDetails implements InterSetRegisterDetail{
     Jdbc jdbcObj=new Jdbc();
     Connection con=jdbcObj.getConnection();
-    public void setRegisterDetails(String name,int age,String gender,String phoneNumber,String password,long accountBalance){
+    public void setRegisterDetails(String name,int age,String gender,String phoneNumber,String password,long accountBalance,long accNo){
         try
         {
-            String query ="INSERT INTO ATMDATABASE(userName,age,gender,phoneNumber,userPassword,accountBalance) VALUES(?,?,?,?,?,?)";
+            String query ="INSERT INTO userDetails(userName,userAge,userGender,userPhoneNumber,userPassword,userAccountBalance,userAccountNumber) VALUES(?,?,?,?,?,?,?)";
             PreparedStatement stm=con.prepareStatement(query);
             stm.setString(1,name);
             stm.setInt(2,age);
@@ -14,6 +14,7 @@ public class SetRegisterDetails implements InterSetRegisterDetail{
             stm.setString(4,phoneNumber);
             stm.setString(5,password);
             stm.setLong(6,accountBalance);
+            stm.setLong(7,accNo);
             stm.executeUpdate();
         }
         catch (Exception e)
@@ -23,7 +24,7 @@ public class SetRegisterDetails implements InterSetRegisterDetail{
     }
     public boolean isPhNoAlreadyRegistered(String phNo)
     {
-        String query="SELECT EXISTS(SELECT * FROM ATMDATABASE WHERE phoneNumber='"+phNo+"') AS RESULT";
+        String query="SELECT EXISTS(SELECT * FROM userDetails WHERE userPhoneNumber='"+phNo+"') AS RESULT";
         int result=1;
         try {
             Statement st = con.createStatement();
@@ -38,6 +39,18 @@ public class SetRegisterDetails implements InterSetRegisterDetail{
             System.out.println(e);
         }
         if(result==1) {
+            String query1="SELECT userName from userDetails WHERE userPhoneNumber='"+phNo+"'";
+            try
+            {
+                Statement st1=con.createStatement();
+                ResultSet rs1=st1.executeQuery(query1);
+                rs1.next();
+                //System.out.println("Account Holder Name : "+rs1.getString("userName"));
+            }
+            catch (Exception e)
+            {
+
+            }
             return true;
         }
         return false;

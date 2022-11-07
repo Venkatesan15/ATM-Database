@@ -2,8 +2,8 @@ package MiddleLayer;
 import DataLayer.InterSetRegisterDetail;
 import DataLayer.SetRegisterDetails;
 public class SaveRegisterDetails {
-    public void saveRegisterDetails(String name,int age,String gender,String phoneNumber,String password){
+    public void saveRegisterDetails(String name,int age,String gender,String phoneNumber,String password,long accountNo){
         InterSetRegisterDetail setRegisterDetailsObj=new SetRegisterDetails();
-        setRegisterDetailsObj.setRegisterDetails(name,age,gender,phoneNumber,password,0);
+        setRegisterDetailsObj.setRegisterDetails(name,age,gender,phoneNumber,password,0,accountNo);
     }
 }

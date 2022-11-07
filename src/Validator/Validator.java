@@ -1,4 +1,4 @@
-package UiLayer;
+package Validator;
 
 public interface Validator{
      boolean checkValidName(String name);

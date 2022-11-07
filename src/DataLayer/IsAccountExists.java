@@ -8,7 +8,7 @@ public class IsAccountExists{
         int a=1;
         try
         {
-            String query ="SELECT EXISTS(SELECT * FROM ATMDATABASE WHERE phoneNumber='"+phNo+"' AND userPassword='"+password+"') AS RES";
+            String query ="SELECT EXISTS(SELECT * FROM userDetails WHERE userPhoneNumber='"+phNo+"' AND userPassword='"+password+"') AS RES";
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery(query);
             rs.next();
