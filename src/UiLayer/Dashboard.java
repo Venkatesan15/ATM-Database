@@ -1,5 +1,6 @@
 package UiLayer;
 import MiddleLayer.CallAtmProcesses;
+import Validator.OnlyInt;
 
 public class Dashboard {
 
@@ -18,8 +19,8 @@ public class Dashboard {
         System.out.println("See profile------------------------>9");
         System.out.println("exit------------------------------->10");
         System.out.println("***************************************");
-        OnlyInt onlyIntObj=new OnlyInt();
-        int a=onlyIntObj.onlyInt();
+
+        int a=OnlyInt.onlyInt();
         if(a>0&&a<11) {
             return a;
         }
@@ -31,17 +32,16 @@ public class Dashboard {
     }
     public void enterDepositAmount(int idNumber)
     {
-        System.out.println("Please enter amount you deposit");
-        OnlyInt onlyIntObj=new OnlyInt();
-        int depositAmount =onlyIntObj.onlyInt();
+        System.out.println("Please enter amount you deposit below 50000");
+
+        int depositAmount =OnlyInt.onlyIntBelowFiftyTh();
         callAtmProcessesObj.addMoney(depositAmount, idNumber);
         System.out.println("Successfully deposited");
     }
     public void enterWithdrawAmount(int idNumber)
     {
-        System.out.println("Please enter how much money u want");
-        OnlyInt onlyIntObj=new OnlyInt();
-        int withdrawAmount= onlyIntObj.onlyInt();
+        System.out.println("Please enter how much money u want maximum of 50000");
+        int withdrawAmount= OnlyInt.onlyIntBelowFiftyTh();
         callAtmProcessesObj.withdraw(withdrawAmount, idNumber);
     }
     public void enterChangePassword(int idNumber)

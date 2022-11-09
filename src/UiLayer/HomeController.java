@@ -1,6 +1,8 @@
 package UiLayer;
 
 
+import Validator.OnlyInt;
+
 public class HomeController {
     RegisterPage registerPageObj =new RegisterPage();
     LoginController loginControllerObj =new LoginController();

@@ -1,8 +1,5 @@
 package UiLayer;
 
-import ExtraFeatures.UiLayer1.*;
-import ExtraFeatures.DataLayer1.SeeCreditCard;
-import ExtraFeatures.DataLayer1.SeeTransactions;
 import MiddleLayer.CallAtmProcesses;
 import Validator.CreationValidator;
 import MiddleLayer.GetAccountByPhNoPass;

@@ -1,5 +1,5 @@
 package DataLayer;
-import ExtraFeatures.MiddleLayer1.TransactionHistory;
+import MiddleLayer.TransactionHistory;
 
 import java.sql.*;
 public class AtmProcesses implements InterAccountProcess{
@@ -49,18 +49,5 @@ public class AtmProcesses implements InterAccountProcess{
             System.out.println(e);
         }
         return 0;
-    }
-
-    public void changePassword(String newPass,int id)
-    {
-        String query ="UPDATE userDetails SET userPassword='"+newPass+"' WHERE userId='"+id+"'";
-        try {
-            Statement st = con.createStatement();
-            st.executeUpdate(query);
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
     }
 }

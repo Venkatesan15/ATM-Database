@@ -1,4 +1,5 @@
 package MiddleLayer;
+import DataLayer.ChangePass;
 import DataLayer.GetUserIdByPhNo;
 import DataLayer.AtmProcesses;
 import DataLayer.InterAccountProcess;
@@ -38,6 +39,7 @@ public class CallAtmProcesses {
     }
     public void changePass(String pass,int id)
     {
-        atmProcessesObj.changePassword(pass,id);
+        ChangePass changePassObj=new ChangePass();
+        changePassObj.changePassword(pass,id);
     }
 }
