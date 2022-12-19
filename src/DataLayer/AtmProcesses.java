@@ -18,6 +18,7 @@ public class AtmProcesses implements InterAccountProcess{
         {
             System.out.println(e);
         }
+
         TransactionHistory transactionHistoryObj=new TransactionHistory();
         transactionHistoryObj.transactionHistory(id,"Credited",depositAmount);
     }

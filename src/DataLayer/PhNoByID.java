@@ -1,22 +1,20 @@
 package DataLayer;
 
-import DataLayer.Jdbc;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class GetAccNoById {
-    public static String  getAccNoById(int userId)
+public class PhNoByID {
+    public static String  getPhNoById(int userId)
     {
         try
         {
-            String query="SELECT userAccountNumber from userDetails where userId='"+userId+"'";
+            String query="SELECT userPhoneNumber from userDetails where userId='"+userId+"'";
             Connection con= Jdbc.getConnection();
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery(query);
             rs.next();
-            return rs.getString("userAccountNumber");
+            return rs.getString("userPhoneNumber");
         }
         catch (Exception e)
         {

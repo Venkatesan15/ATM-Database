@@ -1,20 +1,22 @@
 package DataLayer;
+import Main.User;
+
 import java.sql.*;
 public class SetRegisterDetails implements InterSetRegisterDetail{
     Jdbc jdbcObj=new Jdbc();
     Connection con=jdbcObj.getConnection();
-    public void setRegisterDetails(String name,int age,String gender,String phoneNumber,String password,long accountBalance,long accNo){
+    public void setRegisterDetails(User user){
         try
         {
             String query ="INSERT INTO userDetails(userName,userAge,userGender,userPhoneNumber,userPassword,userAccountBalance,userAccountNumber) VALUES(?,?,?,?,?,?,?)";
             PreparedStatement stm=con.prepareStatement(query);
-            stm.setString(1,name);
-            stm.setInt(2,age);
-            stm.setString(3,gender);
-            stm.setString(4,phoneNumber);
-            stm.setString(5,password);
-            stm.setLong(6,accountBalance);
-            stm.setLong(7,accNo);
+            stm.setString(1,user.getName());
+            stm.setInt(2,user.getAge());
+            stm.setString(3,user.getGender());
+            stm.setString(4,user.getPhoneNumber());
+            stm.setString(5,user.getPassword());
+            stm.setLong(6,user.getAccountBalance());
+            stm.setLong(7,user.getAccountNo());
             stm.executeUpdate();
         }
         catch (Exception e)

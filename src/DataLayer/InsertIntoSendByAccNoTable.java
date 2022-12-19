@@ -1,22 +1,23 @@
 package DataLayer;
 
 import DataLayer.Jdbc;
+import Main.MoneySendByAccNo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class InsertIntoSendByAccNoTable {
-    public void insertIntoSendByAccNoTable(String fromAccountNumber,String toAccountNumber,String todayDate,long amountSent)
+    public void insertIntoSendByAccNoTable(MoneySendByAccNo moneySendByAccNo)
     {
         try
         {
             String query="INSERT INTO sendMoneyByAccNo(fromAccountNumber,toAccountNumber,todayDate,amountSent) VALUES(?,?,?,?)";
             Connection con= Jdbc.getConnection();
             PreparedStatement stm=con.prepareStatement(query);
-            stm.setString(1,fromAccountNumber);
-            stm.setString(2,toAccountNumber);
-            stm.setString(3,todayDate);
-            stm.setLong(4,amountSent);
+            stm.setString(1, moneySendByAccNo.getFromAccNumber());
+            stm.setString(2, moneySendByAccNo.getToAccNumber());
+            stm.setString(3,moneySendByAccNo.getTransactionDate());
+            stm.setLong(4,moneySendByAccNo.getAmountSent());
             stm.executeUpdate();
 
         }

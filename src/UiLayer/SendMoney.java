@@ -9,9 +9,12 @@ public class SendMoney {
         SendMoneyByPhAndAccNo sendMoneyByPhAndAccNoObj=new SendMoneyByPhAndAccNo();
         int userInput=1;
         while(userInput==1||userInput==2) {
-            System.out.println("using phone Number----1");
-            System.out.println("using Account Number----2");
-            System.out.println("Exit----3");
+            System.out.println("----------------------------------------");
+            System.out.println("||     using phone Number------>1     ||");
+            System.out.println("||     using Account Number---->2     ||");
+            System.out.println("||     Exit-------------------->3     ||");
+            System.out.println("----------------------------------------");
+
 
             userInput= OnlyInt.onlyInt();
             if(userInput==1)

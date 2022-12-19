@@ -1,11 +1,12 @@
 package MiddleLayer;
 
 import DataLayer.CreditCardDetails;
+import Main.CreditCard;
 
 public class SaveCCDetails {
-    public void saveCreditCardDetails(int userId,String userPhoneNumber,String aadharNumber,long creditCardNumber,int cvv,String expiryDate)
+    public void saveCreditCardDetails(CreditCard creditCard)
     {
         CreditCardDetails creditCardDetailsObj=new CreditCardDetails();
-        creditCardDetailsObj.creditCardDetails(userId,userPhoneNumber,aadharNumber,creditCardNumber,cvv,expiryDate);
+        creditCardDetailsObj.creditCardDetails(creditCard);
     }
 }

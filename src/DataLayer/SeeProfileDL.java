@@ -11,7 +11,7 @@ public class SeeProfileDL {
     {
         try
         {
-            String query="SELECT userName,userAge,userGender,userPhoneNumber,userAccountNumber from userDetails where userId='"+userId+"'";
+            String query="SELECT * from userDetails where userId='"+userId+"'";
             Connection con= Jdbc.getConnection();
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery(query);

@@ -1,4 +1,5 @@
 package UiLayer;
+import Main.CreditCard;
 import MiddleLayer.EnterAadharNumber;
 import MiddleLayer.GenerateCreditCard;
 import MiddleLayer.IsAccAlreadyHaveCC;
@@ -46,7 +47,9 @@ public class ApplyCreditCard {
 
 
         SaveCCDetails saveCCDetailsObj=new SaveCCDetails();
-        saveCCDetailsObj.saveCreditCardDetails(userId,userPhoneNumber,aadharNumber,creditCardNumber,cvv,expiryDate);
+
+        CreditCard creditCardObj=new CreditCard(userId,userPhoneNumber,aadharNumber,creditCardNumber,expiryDate,cvv);
+        saveCCDetailsObj.saveCreditCardDetails(creditCardObj);
 
         System.out.println();
         System.out.println("*********************************");

@@ -1,12 +1,10 @@
 package DataLayer;
 
-import DataLayer.Jdbc;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class GetAccountHolderName {
+public class AccountHolderName {
     public String getAccHolderNameByPhNo(String phoneNumber)
     {
         String query="SELECT userName FROM userDetails Where userPhoneNumber='"+phoneNumber+"'";

@@ -12,11 +12,12 @@ public class HomeController {
         enterRegOrLoginOrExitByUser=1;
 
         while (enterRegOrLoginOrExitByUser == 1 || enterRegOrLoginOrExitByUser == 2) {
-            System.out.println("_______________________________");
-            System.out.println("Register--->1");
-            System.out.println("Login------>2");
-            System.out.println("Exit------->3");
-            System.out.println("_______________________________");
+            System.out.println("***************************");
+            System.out.println("||     Register--->1     ||");
+            System.out.println("||     Login------>2     ||");
+            System.out.println("||     Exit------->3     ||");
+            System.out.println("***************************");
+
             enterRegOrLoginOrExitByUser =onlyIntObj.onlyInt();
             if (enterRegOrLoginOrExitByUser == 1) {
                 registerPageObj.register();

@@ -3,6 +3,9 @@ import DataLayer.SetRegisterDetails;
 import UiLayer.EnterRegisterDetails;
 import Validator.Validator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static java.lang.String.*;
 
 public class CreationValidator implements Validator
@@ -13,7 +16,12 @@ public class CreationValidator implements Validator
         {
             return  false;
         }
-        return true;
+        else {
+            Pattern p= Pattern.compile("[0-9A-Za-z]+[/s]*");
+            Matcher m=p.matcher(pass);
+            return m.matches();
+        }
+
     }
     public boolean checkValidGender(int gender)
     {

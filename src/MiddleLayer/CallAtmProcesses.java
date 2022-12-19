@@ -1,6 +1,6 @@
 package MiddleLayer;
 import DataLayer.ChangePass;
-import DataLayer.GetUserIdByPhNo;
+import DataLayer.UserIdByPhNo;
 import DataLayer.AtmProcesses;
 import DataLayer.InterAccountProcess;
 import UiLayer.Dashboard;
@@ -10,9 +10,9 @@ public class CallAtmProcesses {
 
     public  int getId(String phoneNumber,String password)
     {
-        GetUserIdByPhNo getUserIdByPhNoObj=new GetUserIdByPhNo();
+        UserIdByPhNo userIdByPhNoObj =new UserIdByPhNo();
 
-        return getUserIdByPhNoObj.getId(phoneNumber,password);
+        return userIdByPhNoObj.getId(phoneNumber,password);
     }
 
     public void addMoney(int depositAmount, int idNumber)

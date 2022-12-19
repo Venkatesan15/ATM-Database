@@ -8,17 +8,18 @@ public class Dashboard {
 
     public int enterProcess()
     {
-        System.out.println("if u want add money--------------->1");
-        System.out.println("if u want check balance----------->2");
-        System.out.println("if u want withdraw money---------->3");
-        System.out.println("if u want to change ur password--->4");
-        System.out.println("if u want send Money to anyone---->5");
-        System.out.println("if u want to apply credit card---->6");
-        System.out.println("See transaction history------------>7");
-        System.out.println("See credit Card details------------>8");
-        System.out.println("See profile------------------------>9");
-        System.out.println("exit------------------------------->10");
-        System.out.println("***************************************");
+        System.out.println("***************************************************");
+        System.out.println("||     if u want add money---------------->1     ||");
+        System.out.println("||     if u want check balance------------>2     ||");
+        System.out.println("||     if u want withdraw money----------->3     ||");
+        System.out.println("||     if u want to change ur password---->4     ||");
+        System.out.println("||     if u want send Money to anyone----->5     ||");
+        System.out.println("||     if u want to apply credit card----->6     ||");
+        System.out.println("||     See transaction history------------>7     ||");
+        System.out.println("||     See credit Card details------------>8     ||");
+        System.out.println("||     See profile------------------------>9     ||");
+        System.out.println("||     exit------------------------------->10    ||");
+        System.out.println("***************************************************");
 
         int a=OnlyInt.onlyInt();
         if(a>0&&a<11) {

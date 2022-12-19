@@ -1,6 +1,7 @@
 package UiLayer;
 
 import DataLayer.SeeTransactions;
+import Main.TransactionHistory;
 
 import java.sql.*;
 
@@ -12,12 +13,19 @@ public class GetTransactionDetails {
         int count=1;
         try {
             while (rs.next()) {
+                String transactionDate=rs.getString("transactionDate");
+                String debitOrCredit=rs.getString("debitOrCredit");
+                long amount=rs.getLong("amount");
+                long accBal=rs.getLong("accountBalance");
+
+                TransactionHistory transactionHistory=new TransactionHistory(userId,transactionDate,debitOrCredit,amount,accBal);
+
                 System.out.println("***************************************");
-                System.out.println("S.NO   : " + count);
-                System.out.println("Date   : " + rs.getString("transactionDate"));
-                System.out.println("Status : " + rs.getString("debitOrCredit"));
-                System.out.println("Amount : " + rs.getString("amount"));
-                System.out.println("Account Balance : " + rs.getLong("accountBalance"));
+                System.out.println("S.NO            : " + count);
+                System.out.println("Date            : " + transactionHistory.getTodayDate());
+                System.out.println("Status          : " + transactionHistory.getDebitOrCredit());
+                System.out.println("Amount          : " + transactionHistory.getTransactionAmount());
+                System.out.println("Account Balance : " + transactionHistory.getBalance());
                 System.out.println("****************************************");
                 count++;
             }

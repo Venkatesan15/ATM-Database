@@ -1,5 +1,6 @@
 package UiLayer;
 
+import Main.User;
 import MiddleLayer.GetUserProfile;
 
 import java.sql.ResultSet;
@@ -10,12 +11,23 @@ public class SeeProfile {
         try {
             ResultSet rs=GetUserProfile.getUserProfile(userId);
             rs.next();
+
+            String name=rs.getString("userName");
+            int age=rs.getInt("userAge");
+            String gender=rs.getString("userGender");
+            String pass=rs.getString("userPassword");
+            String phoneNumber=rs.getString("userPhoneNumber");
+            long accountNumber=rs.getLong("userAccountNumber");
+            long accountBalance=rs.getLong("userAccountBalance");
+
+            User user=new User(name,age,gender,phoneNumber,pass,accountNumber,accountBalance);
+
             System.out.println("********************************************************");
-            System.out.println("Name : "+rs.getString("userName"));
-            System.out.println("Age : "+rs.getInt("userAge"));
-            System.out.println("Gender : "+rs.getString("userGender"));
-            System.out.println("Phone Number : "+rs.getString("userPhoneNumber"));
-            System.out.println("Account Number : "+rs.getLong("userAccountNumber"));
+            System.out.println("Name           : "+user.getName());
+            System.out.println("Age            : "+user.getAge());
+            System.out.println("Gender         : "+user.getGender());
+            System.out.println("Phone Number   : "+user.getPhoneNumber());
+            System.out.println("Account Number : "+user.getAccountNo());
             System.out.println("**********************************************************");
 
         }

@@ -8,6 +8,8 @@ public class TransactionHistory {
     {
         String todayDate=GetTodayDate.getTodayDate();
 
-        SaveTransactions.saveTransactions(userId, todayDate,debitOrCredit,amount);
+        Main.TransactionHistory transactionHistoryObj=new Main.TransactionHistory(userId,todayDate,debitOrCredit,amount,0);
+
+        SaveTransactions.saveTransactions(transactionHistoryObj);
     }
 }

@@ -1,6 +1,8 @@
 package MiddleLayer;
 
 import DataLayer.*;
+import Main.MoneySendByAccNo;
+import Main.MoneySendByPhNo;
 import UiLayer.LoginController;
 import Validator.OnlyInt;
 
@@ -18,9 +20,9 @@ public class SendMoneyByPhAndAccNo {
 
 
         if(IsPhNoRegistered.isPhNoRegistered(toPhoneNumber)) {
-            GetAccountHolderName getAccountHolderNameObj=new GetAccountHolderName();
+            AccountHolderName accountHolderNameObj =new AccountHolderName();
             System.out.println();
-            System.out.println("ACCOUNT HOLDER NAME : "+getAccountHolderNameObj.getAccHolderNameByPhNo(toPhoneNumber));
+            System.out.println("ACCOUNT HOLDER NAME : "+ accountHolderNameObj.getAccHolderNameByPhNo(toPhoneNumber));
             System.out.println();
             System.out.println("How much money want to send below 50000");
             amount = OnlyInt.onlyIntBelowFiftyTh();
@@ -32,11 +34,13 @@ public class SendMoneyByPhAndAccNo {
         }
         if(res==1)
         {
-            String fromPhoneNumber= GetPhNoByID.getPhNoById(userId);
+            String fromPhoneNumber= PhNoByID.getPhNoById(userId);
             String todayDate= GetTodayDate.getTodayDate();
 
+            MoneySendByPhNo moneySendByPhNoObj=new MoneySendByPhNo(fromPhoneNumber,toPhoneNumber,todayDate,amount);
+
             InsertSendByPhNoTable insertSendByPhNoTableObj=new InsertSendByPhNoTable();
-            insertSendByPhNoTableObj.insertSendByPhNoTable(fromPhoneNumber,toPhoneNumber,todayDate,amount);
+            insertSendByPhNoTableObj.insertSendByPhNoTable(moneySendByPhNoObj);
 
             CreditToSendAccount creditToSendAccount=new CreditToSendAccount();
             creditToSendAccount.creditToSendAccountByPhNo(toPhoneNumber,amount,userId);
@@ -57,8 +61,8 @@ public class SendMoneyByPhAndAccNo {
 
         if(isAccNoRegObj.isAccNoReg(accountNumber)) {
 
-            GetAccountHolderName getAccountHolderNameObj=new GetAccountHolderName();
-            System.out.println("ACCOUNT HOLDER NAME : "+getAccountHolderNameObj.getAccHolderNameByAccNo(accountNumber));
+            AccountHolderName accountHolderNameObj =new AccountHolderName();
+            System.out.println("ACCOUNT HOLDER NAME : "+ accountHolderNameObj.getAccHolderNameByAccNo(accountNumber));
             System.out.println();
             System.out.println("How much money want to send below 50000");
             amount=OnlyInt.onlyIntBelowFiftyTh();
@@ -71,11 +75,13 @@ public class SendMoneyByPhAndAccNo {
         }
         if(res==1)
         {
-            String fromAccountNumber= GetAccNoById.getAccNoById(userId);
+            String fromAccountNumber= AccNoById.getAccNoById(userId);
             String todayDate= GetTodayDate.getTodayDate();
 
+            MoneySendByAccNo moneySendByAccNo=new MoneySendByAccNo(fromAccountNumber,accountNumber,todayDate,amount);
+
             InsertIntoSendByAccNoTable insertIntoSendByAccNoTableObj=new InsertIntoSendByAccNoTable();
-            insertIntoSendByAccNoTableObj.insertIntoSendByAccNoTable(fromAccountNumber,accountNumber,todayDate,amount);
+            insertIntoSendByAccNoTableObj.insertIntoSendByAccNoTable(moneySendByAccNo);
 
             CreditToSendAccount creditToSendAccount=new CreditToSendAccount();
             creditToSendAccount.creditToSendAccountByAccNo(accountNumber,amount,userId);

@@ -3,7 +3,7 @@ package DataLayer;
 import java.sql.*;
 
 
-public class GetUserIdByPhNo {
+public class UserIdByPhNo {
     public int getId(String phNo,String pass)
     {
         Jdbc jdbcObj=new Jdbc();

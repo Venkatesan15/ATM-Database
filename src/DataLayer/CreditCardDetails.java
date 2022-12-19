@@ -1,22 +1,23 @@
 package DataLayer;
 
 import DataLayer.Jdbc;
+import Main.CreditCard;
 
 import java.sql.*;
 
 public class CreditCardDetails {
-    public void creditCardDetails(int userId,String userPhoneNumber,String aadharNumber,long creditCardNumber,int cvv,String expiryDate){
+    public void creditCardDetails(CreditCard creditCard){
         Jdbc jdbcObj=new Jdbc();
         Connection con= jdbcObj.getConnection();
         try {
             String query = "INSERT INTO creditCard(userId,userPhoneNumber,aadharNumber,cardNumber,cvv,expiryDate) VALUES(?,?,?,?,?,?)";
             PreparedStatement st = con.prepareStatement(query);
-            st.setInt(1, userId);
-            st.setString(2, userPhoneNumber);
-            st.setString(3, aadharNumber);
-            st.setLong(4, creditCardNumber);
-            st.setInt(5, cvv);
-            st.setString(6, expiryDate);
+            st.setInt(1, creditCard.getUserId());
+            st.setString(2, creditCard.getPhoneNumber());
+            st.setString(3, creditCard.getAadharNumber());
+            st.setLong(4, creditCard.getCreditCardNumber());
+            st.setInt(5, creditCard.getCvv());
+            st.setString(6, creditCard.getExpiryDate());
             st.executeUpdate();
             System.out.println("Applied successfully");
         }

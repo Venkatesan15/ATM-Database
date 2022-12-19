@@ -7,7 +7,8 @@ public class ChangePass {
     public void changePassword(String newPass,int id)
     {
         String query ="UPDATE userDetails SET userPassword='"+newPass+"' WHERE userId='"+id+"'";
-        try {
+        try
+        {
             Connection con=Jdbc.getConnection();
             Statement st = con.createStatement();
             st.executeUpdate(query);
